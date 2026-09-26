@@ -44,7 +44,7 @@ export function Stats() {
           </div>
           <div className="stat">
             <span className="stat-num">{t.games}</span>
-            <span className="stat-label">{plural(t.games, 'игра дня', 'игры дня', 'игр дня')} · разминок {t.practice}</span>
+            <span className="stat-label">{plural(t.games, 'игра дня', 'игры дня', 'игр дня')} · разминки: {t.practice}</span>
           </div>
           <div className="stat">
             <span className="stat-num">{t.answered ? Math.round((t.correct / t.answered) * 100) : 0}%</span>

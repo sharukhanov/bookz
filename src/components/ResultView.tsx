@@ -107,7 +107,7 @@ export function ResultView({ kind, day, mode, answers, rounds, score, unlocked, 
         <section className="stat-grid">
           <div className="stat">
             <span className="stat-num tabular">{formatScore(score)}</span>
-            <span className="stat-label">очков{perfect && ` · вкл. +${PERFECT_BONUS} за идеальную игру`}</span>
+            <span className="stat-label">{plural(score, 'очко', 'очка', 'очков')}{perfect && ` · вкл. +${PERFECT_BONUS} за идеальную игру`}</span>
           </div>
           <div className="stat">
             <span className="stat-num">{total ? Math.round((correct / total) * 100) : 0}%</span>
