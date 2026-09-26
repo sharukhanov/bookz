@@ -1,5 +1,5 @@
 import type { AnswerRecord } from './storage';
-import { issueNumber } from './date';
+import { issueNumber, plural } from './date';
 
 export const SITE_NAME = 'Закладка';
 
@@ -19,7 +19,7 @@ export function dailyShareText(opts: { day: string; correct: number; total: numb
   const lines = [
     `📚 ${SITE_NAME} №${issueNumber(opts.day)} — ${opts.correct}/${opts.total}`,
     resultGrid(opts.answers),
-    `✦ ${formatScore(opts.score)} очков${opts.streak > 1 ? ` · 🔥 ${opts.streak}` : ''}`,
+    `✦ ${formatScore(opts.score)} ${plural(opts.score, 'очко', 'очка', 'очков')}${opts.streak > 1 ? ` · 🔥 ${opts.streak}` : ''}`,
     'Сможешь лучше?',
     siteUrl(),
   ];

@@ -63,7 +63,7 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
               ты <em>знаешь</em> книги?
             </h1>
             <p className="lede">
-              Каждый день — {DAILY_SLOTS.length} вопросов вперемешку: книга по дурацкому пересказу, герой по уликам, обложка
+              Каждый день — {DAILY_SLOTS.length} {plural(DAILY_SLOTS.length, 'вопрос', 'вопроса', 'вопросов')} вперемешку: книга по дурацкому пересказу, герой по уликам, обложка
               из эмодзи, выдуманное название среди настоящих. Пять минут, один выпуск для всех.
             </p>
             <div className="today-modes">
@@ -168,7 +168,7 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
                   <span className="mode-title">{m.title}</span>
                   <span className="mode-blurb">{m.blurb}</span>
                   <span className="mode-meta">
-                    {questionsOfType(t).length} вопросов
+                    {questionsOfType(t).length} {plural(questionsOfType(t).length, 'вопрос', 'вопроса', 'вопросов')}
                     {stat && stat.seen > 0 && <> · {Math.round((stat.correct / stat.seen) * 100)}% верно</>}
                   </span>
                 </a>
