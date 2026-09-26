@@ -64,7 +64,7 @@ export function About() {
           </ul>
         </section>
 
-        <section className="about-block">
+        <section className="about-block about-keys">
           <h2 className="h3">Клавиатура</h2>
           <p>
             <kbd>1</kbd>–<kbd>4</kbd> — ответ, <kbd>H</kbd> — подсказка, <kbd>Enter</kbd> — дальше, <kbd>Esc</kbd> — на главную.

@@ -37,7 +37,8 @@ export function QuestionCard({ round, number, total, hints, answer, onChoose, on
   const hintList = hintsOf(q);
   const nextRef = useRef<HTMLButtonElement>(null);
   const revealRef = useRef<HTMLDivElement>(null);
-  const binary = options.length === 2;
+  // Два коротких варианта — в строку (книга/кино, хит/позже); длинные пары — столбиком.
+  const binary = options.length === 2 && options.every((o) => o.length <= 24);
 
   useEffect(() => {
     if (!revealed) return;
@@ -61,9 +62,8 @@ export function QuestionCard({ round, number, total, hints, answer, onChoose, on
           <span className="qcard-glyph">
             <ModeIcon type={q.type} size={18} />
           </span>
-          {mode.title}
+          <span className="qcard-mode-name">{mode.title}</span>
         </span>
-        {q.tag && <span className="tag">{q.tag}</span>}
         <span className="qcard-count">
           {number}/{total}
           <span className="diff" aria-label={`Сложность ${q.difficulty} из 3`}>
@@ -73,6 +73,12 @@ export function QuestionCard({ round, number, total, hints, answer, onChoose, on
           </span>
         </span>
       </div>
+
+      {q.tag && (
+        <div className="qcard-tag">
+          <span className="tag">{q.tag}</span>
+        </div>
+      )}
 
       <h2 id="q-ask" className="qcard-ask">
         {q.ask ?? mode.ask}
