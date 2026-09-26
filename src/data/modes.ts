@@ -9,7 +9,6 @@ export interface ModeInfo {
   blurb: string;
   /** Вопрос по умолчанию */
   ask: string;
-  glyph: string;
 }
 
 export const MODES: Record<QuestionType, ModeInfo> = {
@@ -19,7 +18,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Пересказы',
     blurb: 'Классика глазами HR, Netflix и отзывов на маркетплейсе',
     ask: 'Какая это книга?',
-    glyph: '¶',
   },
   line: {
     type: 'line',
@@ -27,7 +25,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Фразы',
     blurb: 'Первая строка или цитата, которую все слышали',
     ask: 'Откуда эта фраза?',
-    glyph: '“',
   },
   character: {
     type: 'character',
@@ -35,7 +32,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Персонажи',
     blurb: 'Угадай героя по уликам. Чем раньше — тем больше очков',
     ask: 'Кто этот персонаж?',
-    glyph: '?',
   },
   author: {
     type: 'author',
@@ -43,7 +39,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Авторы',
     blurb: 'Биография по кусочкам: кто это написал?',
     ask: 'О каком авторе речь?',
-    glyph: '✒',
   },
   emoji: {
     type: 'emoji',
@@ -51,7 +46,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Эмодзи',
     blurb: 'Три значка — один роман',
     ask: 'Что за книга на обложке?',
-    glyph: '✦',
   },
   fake: {
     type: 'fake',
@@ -59,7 +53,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Выдумки',
     blurb: 'Три книги настоящие. Одну мы сочинили',
     ask: 'Какой книги не существует?',
-    glyph: '✕',
   },
   screen: {
     type: 'screen',
@@ -67,7 +60,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Книга/кино',
     blurb: 'Что было первым — и что придумали уже для экрана',
     ask: 'Книга или кино: как было на самом деле?',
-    glyph: '▶',
   },
   fame: {
     type: 'fame',
@@ -75,7 +67,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Судьбы книг',
     blurb: 'Бестселлер с первого дня или гений, которого не заметили',
     ask: 'Эта книга стала хитом сразу — или её признали позже?',
-    glyph: '↗',
   },
   money: {
     type: 'money',
@@ -83,7 +74,6 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     short: 'Деньги',
     blurb: 'Долги, аукционы и самые дорогие книги в истории',
     ask: 'Как думаешь?',
-    glyph: '₽',
   },
 };
 

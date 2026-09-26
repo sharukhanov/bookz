@@ -619,10 +619,7 @@ kbd {
   line-height: 1;
   color: var(--accent);
   margin-bottom: 10px;
-  transition: transform 0.35s var(--ease);
-}
-.mode-card:hover .mode-glyph {
-  transform: rotate(-8deg) scale(1.1);
+  display: block;
 }
 .mode-title {
   font-family: var(--serif);
@@ -769,9 +766,8 @@ kbd {
   color: var(--ink-2);
 }
 .qcard-glyph {
-  font-family: var(--serif);
+  display: inline-flex;
   color: var(--accent);
-  font-size: 18px;
 }
 .qcard-count {
   margin-left: auto;
