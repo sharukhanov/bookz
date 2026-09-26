@@ -1,0 +1,56 @@
+<!doctype html>
+<!-- Шаблон картинки-превью для ссылок (1200×630). Пересобрать: node scripts/og/render.cjs -->
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: 'PF'; src: url('../../node_modules/@fontsource-variable/playfair-display/files/playfair-display-cyrillic-wght-normal.woff2') format('woff2'); font-weight: 400 900; }
+  @font-face { font-family: 'PF'; font-style: italic; src: url('../../node_modules/@fontsource-variable/playfair-display/files/playfair-display-cyrillic-wght-italic.woff2') format('woff2'); font-weight: 400 900; }
+  @font-face { font-family: 'ON'; src: url('../../node_modules/@fontsource-variable/onest/files/onest-cyrillic-wght-normal.woff2') format('woff2'); font-weight: 100 900; }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 630px; background: #f3eee4; color: #17150f; font-family: 'ON', sans-serif; overflow: hidden; position: relative; }
+  .left { position: absolute; left: 72px; top: 64px; width: 640px; }
+  .logo { display: flex; align-items: center; gap: 14px; font-family: 'PF'; font-weight: 700; font-size: 34px; }
+  .logo svg { width: 22px; height: 31px; fill: #e0452a; }
+  h1 { font-family: 'PF'; font-weight: 600; font-size: 70px; line-height: 1; letter-spacing: -0.025em; margin-top: 70px; white-space: nowrap; }
+  h1 em { font-style: italic; font-weight: 500; color: #e0452a; }
+  .sub { margin-top: 28px; font-size: 25px; color: #3a352c; line-height: 1.4; }
+  .pills { position: absolute; left: 72px; bottom: 58px; display: flex; gap: 10px; }
+  .pill { padding: 9px 18px; border-radius: 999px; background: #17150f; color: #f3eee4; font-size: 20px; font-weight: 600; }
+  .pill.l { background: transparent; color: #17150f; border: 2px solid #17150f; }
+  .card { position: absolute; background: #fbf8f2; border: 1px solid #ddd4c4; border-radius: 24px; padding: 24px 26px; box-shadow: 0 24px 50px -24px rgba(23,21,15,.45); }
+  .tag { display: inline-block; font-size: 15px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #e0452a; border: 1.5px solid #e0452a; border-radius: 999px; padding: 4px 11px; }
+  .c1 { right: 56px; top: 56px; width: 400px; transform: rotate(3deg); }
+  .c1 p { font-family: 'PF'; font-size: 23px; line-height: 1.28; margin-top: 14px; }
+  .c1 .ask { font-size: 16px; color: #7a7263; margin-top: 16px; padding-top: 12px; border-top: 1.5px dashed #ddd4c4; }
+  .book { position: absolute; right: 300px; top: 356px; width: 170px; height: 212px; white-space: nowrap; font-size: 34px !important; border-radius: 6px 16px 16px 6px;
+    background: linear-gradient(90deg, rgba(0,0,0,.16) 0 9px, transparent 9px 15px), #e0452a; display: grid; place-items: center;
+    transform: rotate(-6deg); box-shadow: 0 28px 50px -22px rgba(23,21,15,.55); padding-left: 12px; }
+  .c3 { right: 60px; top: 404px; width: 250px; transform: rotate(4deg); background: #17150f; color: #f3eee4; border-color: #17150f; }
+  .c3 .big { font-family: 'PF'; font-size: 58px; font-weight: 700; line-height: 1; }
+  .c3 .big span { color: #e0452a; font-style: italic; }
+  .c3 .grid { display: flex; gap: 5px; margin-top: 12px; }
+  .c3 .grid i { width: 17px; height: 17px; border-radius: 4px; background: #5fc48b; }
+  .c3 .grid i.b { background: #ff6445; } .c3 .grid i.h { background: #e3b457; }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="logo"><svg viewBox="0 0 20 28"><path d="M2 1h16v25l-8-6.5L2 26z"/></svg>Закладка</div>
+    <h1>Насколько хорошо<br>ты <em>знаешь</em> книги?</h1>
+    <p class="sub">Классика в пересказе HR и Netflix, герои<br>по подсказкам, обложки из эмодзи.</p>
+  </div>
+  <div class="pills"><span class="pill">10 вопросов в день</span><span class="pill l">5 минут</span><span class="pill l">без регистрации</span></div>
+
+  <div class="card c1">
+    <span class="tag">Отзыв ★☆☆☆☆</span>
+    <p>Купил умную колонку, а она смотрит в ответ. Министерство правды сказало, что колонки никогда не было.</p>
+    <div class="ask">Какая это книга?</div>
+  </div>
+  <div class="book">🐋🦵⚓</div>
+  <div class="card c3">
+    <div class="big">8<span>/</span>10</div>
+    <div class="grid"><i></i><i></i><i class="h"></i><i></i><i class="b"></i><i></i><i></i><i></i><i class="b"></i><i></i></div>
+  </div>
+</body>
+</html>
