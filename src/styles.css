@@ -469,50 +469,98 @@ kbd {
 }
 
 .hero-art {
-  position: relative;
-  height: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hero-art-label {
+  margin: 0 0 4px 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 .teaser {
-  position: absolute;
-  width: 78%;
-  padding: 26px 26px 30px;
+  position: relative;
+  width: 90%;
+  padding: 20px 22px 18px;
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   border: 1px solid var(--line);
   animation: float-in 0.9s var(--ease) both;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.teaser:hover {
+  box-shadow: var(--shadow-lift);
+  z-index: 5;
+}
+.teaser-kind {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.teaser .tag {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
 }
 .teaser p {
   font-family: var(--serif);
-  font-size: 21px;
+  font-size: 19px;
   line-height: 1.3;
-  margin: 14px 0 0;
+  margin: 12px 0 14px;
+}
+.teaser-answer {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-size: 14px;
+  color: var(--muted);
+}
+.teaser-answer b {
+  color: var(--ink);
+  filter: blur(5px);
+  transition: filter 0.3s var(--ease);
+}
+.teaser:hover .teaser-answer b {
+  filter: none;
 }
 .teaser-0 {
-  top: 0;
-  right: 0;
-  transform: rotate(2.5deg);
+  align-self: flex-end;
+  transform: rotate(1.5deg);
   animation-delay: 0.1s;
 }
 .teaser-1 {
-  top: 150px;
-  left: 0;
-  transform: rotate(-3deg);
+  align-self: flex-start;
+  transform: rotate(-2deg);
   animation-delay: 0.22s;
-  z-index: 1;
 }
 .teaser-2 {
-  top: 300px;
-  right: 4%;
-  transform: rotate(1.5deg);
+  align-self: flex-end;
+  margin-right: 2%;
+  transform: rotate(1deg);
   animation-delay: 0.34s;
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
-  z-index: 2;
 }
-.teaser-2 .tag {
-  color: var(--accent);
+.teaser-2 .teaser-kind,
+.teaser-2 .teaser-answer {
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+}
+.teaser-2 .teaser-answer {
+  border-top-color: color-mix(in srgb, var(--paper) 25%, transparent);
+}
+.teaser-2 .teaser-answer b {
+  color: var(--paper);
 }
 @keyframes float-in {
   from {
