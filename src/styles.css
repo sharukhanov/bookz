@@ -748,11 +748,13 @@ kbd {
 
 .qcard-ask {
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: clamp(20px, 2.4vw, 25px);
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--muted);
-  margin: 26px 0 12px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 24px 0 16px;
+  text-wrap: balance;
 }
 
 .qcard-body {
@@ -774,7 +776,7 @@ kbd {
   text-wrap: pretty;
 }
 .prose-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3.2vw, 32px);
   font-weight: 600;
   line-height: 1.15;
 }
