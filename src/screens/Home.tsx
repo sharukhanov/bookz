@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Countdown } from '../components/Countdown';
+import { ModeIcon } from '../components/ModeIcon';
 import { MODE_ORDER, MODES } from '../data/modes';
 import { questionsOfType } from '../data/questions';
 import { addDays, dayKey, formatDay, issueNumber, weekday, weekdayShort, plural } from '../lib/date';
@@ -138,8 +139,8 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
               const stat = store.totals.byType[t];
               return (
                 <a key={t} className="mode-card rise" style={{ animationDelay: `${i * 40}ms` }} href={`#/mode/${t}`}>
-                  <span className="mode-glyph" aria-hidden="true">
-                    {m.glyph}
+                  <span className="mode-glyph">
+                    <ModeIcon type={t} size={30} />
                   </span>
                   <span className="mode-title">{m.title}</span>
                   <span className="mode-blurb">{m.blurb}</span>

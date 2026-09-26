@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { Question } from '../data/types';
 import { MODES } from '../data/modes';
+import { ModeIcon } from './ModeIcon';
 import type { AnswerRecord } from '../lib/storage';
 import { HINT_FACTOR } from '../lib/scoring';
 
@@ -57,8 +58,8 @@ export function QuestionCard({ round, number, total, hints, answer, onChoose, on
     >
       <div className="qcard-meta">
         <span className="qcard-mode">
-          <span className="qcard-glyph" aria-hidden="true">
-            {mode.glyph}
+          <span className="qcard-glyph">
+            <ModeIcon type={q.type} size={18} />
           </span>
           {mode.title}
         </span>
