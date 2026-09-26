@@ -7,24 +7,30 @@ import { questionsOfType } from '../data/questions';
 import { addDays, dayKey, formatDay, issueNumber, weekday, weekdayShort, plural } from '../lib/date';
 import { liveStreak } from '../lib/progress';
 import { useStore } from '../lib/storage';
-import { DAILY_SLOTS } from '../lib/daily';
+import { DAILY_SLOTS, dailyQuestions } from '../lib/daily';
+import type { QuestionType } from '../data/types';
 
-// Примеры на главной — книги, которых нет в датасете, чтобы не спойлерить игру.
-const TEASERS = [
+// Примеры на главной — разные режимы и книги, которых нет среди ответов, чтобы не спойлерить игру.
+const TEASERS: { type: QuestionType; style?: string; text: string; big?: boolean; ask: string; answer: string }[] = [
   {
+    type: 'retell',
     style: 'в стиле вакансии',
     text: 'Требуется сторож в фамильный сад. Опыт работы с вишней не важен: сад всё равно продадут.',
+    ask: 'Какая это книга?',
     answer: 'Вишнёвый сад',
   },
   {
-    style: 'в стиле отзыва ★☆☆☆☆',
-    text: 'Отель на острове. Заехало десять гостей, к выезду не осталось никого. Хозяин так и не появился.',
-    answer: 'И никого не стало',
+    type: 'emoji',
+    text: '🦁 🧙‍♀️ 🚪',
+    big: true,
+    ask: 'Что за книга?',
+    answer: 'Лев, колдунья и платяной шкаф',
   },
   {
-    style: 'в стиле Netflix',
-    text: 'Мальчик, который не хочет взрослеть, уводит троих детей через окно. Семейное, пираты.',
-    answer: 'Питер Пэн',
+    type: 'character',
+    text: 'Улика 1: однажды вытащил себя из болота за собственные волосы.',
+    ask: 'Кто это?',
+    answer: 'Барон Мюнхгаузен',
   },
 ];
 
@@ -37,6 +43,8 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
   useEffect(() => {
     if (focusModes) document.getElementById('modes')?.scrollIntoView({ behavior: 'smooth' });
   }, [focusModes]);
+  // Какие режимы попали в сегодняшний выпуск — показываем на главной без спойлеров.
+  const todayTypes = [...new Set(dailyQuestions(today).map((q) => q.type))];
   const week = Array.from({ length: 7 }, (_, i) => addDays(today, i - 6));
 
   return (
@@ -50,14 +58,25 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
               №{issueNumber(today)} · {weekday(today)}, {formatDay(today)}
             </p>
             <h1 className="display">
-              Узнаешь книгу
+              Насколько хорошо
               <br />
-              по <em>плохому</em> пересказу?
+              ты <em>знаешь</em> книги?
             </h1>
             <p className="lede">
-              Ежедневная игра про книги, героев и авторов. {DAILY_SLOTS.length} вопросов, около пяти минут. Сегодняшняя игра —
-              одна и та же для всех.
+              Каждый день — {DAILY_SLOTS.length} вопросов вперемешку: книга по дурацкому пересказу, герой по уликам, обложка
+              из эмодзи, выдуманное название среди настоящих. Пять минут, один выпуск для всех.
             </p>
+            <div className="today-modes">
+              <span className="today-modes-label">В сегодняшнем выпуске</span>
+              <ul>
+                {todayTypes.map((t) => (
+                  <li key={t}>
+                    <ModeIcon type={t} size={15} />
+                    {MODES[t].title}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="hero-actions">
               {played ? (
@@ -117,11 +136,13 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
             {TEASERS.map((t, i) => (
               <div key={t.answer} className={`teaser teaser-${i}`}>
                 <span className="teaser-kind">
-                  Плохой пересказ <span className="tag">{t.style}</span>
+                  <ModeIcon type={t.type} size={15} />
+                  {MODES[t.type].title}
+                  {t.style && <span className="tag">{t.style}</span>}
                 </span>
-                <p>{t.text}</p>
+                <p className={t.big ? 'teaser-big' : undefined}>{t.text}</p>
                 <span className="teaser-answer">
-                  Какая это книга? <b>{t.answer}</b>
+                  {t.ask} <b>{t.answer}</b>
                 </span>
               </div>
             ))}
@@ -130,8 +151,10 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
 
         <section className="section" id="modes">
           <div className="section-head">
-            <h2 className="h2">Разминка</h2>
-            <p className="muted">Отдельные режимы — сколько угодно раз. В серию не идут, но копят достижения.</p>
+            <h2 className="h2">Или по одному режиму</h2>
+            <p className="muted">
+              Любимый тип вопросов — сколько угодно раундов. В серию не идут, но копят статистику и достижения.
+            </p>
           </div>
           <div className="modes">
             {MODE_ORDER.map((t, i) => {
