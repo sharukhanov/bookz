@@ -35,7 +35,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: 'casting', icon: '🎭', title: 'Кастинг-директор', desc: 'Узнать 10 персонажей', check: (s) => correctOf(s, 'character') >= 10 },
   { id: 'cinephile', icon: '🎬', title: 'Киноман', desc: '10 верных ответов в «Книге или кино»', check: (s) => correctOf(s, 'screen') >= 10 },
   { id: 'erudite', icon: '🧠', title: 'Эрудит', desc: '5 сложных вопросов подряд без ошибок', check: (s) => s.totals.hardRunBest >= 5 },
-  { id: 'firstclue', icon: '🔎', title: 'С первой улики', desc: '5 раз угадать героя или автора без подсказок', check: (s) => s.totals.firstClue >= 5 },
+  { id: 'firstclue', icon: '🔎', title: 'С первой подсказки', desc: '5 раз угадать героя или автора без подсказок', check: (s) => s.totals.firstClue >= 5 },
   {
     id: 'speed',
     icon: '⚡',

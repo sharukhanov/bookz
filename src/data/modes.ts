@@ -30,7 +30,7 @@ export const MODES: Record<QuestionType, ModeInfo> = {
     type: 'character',
     title: 'Кто это?',
     short: 'Персонажи',
-    blurb: 'Угадай героя по уликам. Чем раньше — тем больше очков',
+    blurb: 'Угадай героя по подсказкам. Чем раньше — тем больше очков',
     ask: 'Кто этот персонаж?',
   },
   author: {

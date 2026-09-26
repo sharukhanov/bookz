@@ -98,7 +98,7 @@ export function QuestionCard({ round, number, total, hints, answer, onChoose, on
           <ol className="clues">
             {shownClues.map((c, i) => (
               <li key={i} className="clue fade-in">
-                <span className="clue-n">Улика {i + 1}</span>
+                <span className="clue-n">Подсказка {i + 1}</span>
                 {c}
               </li>
             ))}
@@ -114,7 +114,7 @@ export function QuestionCard({ round, number, total, hints, answer, onChoose, on
 
       {canHint && hintList.length > 0 && (
         <button className="btn btn-ghost hint-btn" onClick={onHint}>
-          {q.type === 'emoji' ? 'Расшифровка' : 'Ещё улика'} <span className="muted">−{nextPenalty}% очков</span>
+          {q.type === 'emoji' ? 'Расшифровка' : 'Ещё подсказка'} <span className="muted">−{nextPenalty}% очков</span>
           <kbd>H</kbd>
         </button>
       )}
