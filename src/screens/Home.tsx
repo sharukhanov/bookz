@@ -28,7 +28,7 @@ const TEASERS: { type: QuestionType; style?: string; text: string; big?: boolean
   },
   {
     type: 'character',
-    text: 'Улика 1: однажды вытащил себя из болота за собственные волосы.',
+    text: 'Подсказка 1: однажды вытащил себя из болота за собственные волосы.',
     ask: 'Кто это?',
     answer: 'Барон Мюнхгаузен',
   },
@@ -63,7 +63,7 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
               ты <em>знаешь</em> книги?
             </h1>
             <p className="lede">
-              Каждый день — {DAILY_SLOTS.length} {plural(DAILY_SLOTS.length, 'вопрос', 'вопроса', 'вопросов')} вперемешку: книга по дурацкому пересказу, герой по уликам, обложка
+              Каждый день — {DAILY_SLOTS.length} {plural(DAILY_SLOTS.length, 'вопрос', 'вопроса', 'вопросов')} вперемешку: книга по дурацкому пересказу, герой по подсказкам, обложка
               из эмодзи, выдуманное название среди настоящих. Пять минут, один выпуск для всех.
             </p>
             <div className="today-modes">

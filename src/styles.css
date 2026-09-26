@@ -78,6 +78,8 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* страховка от горизонтального «дрожания» страницы на телефонах */
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
@@ -134,7 +136,7 @@ kbd {
 .page {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 24px 64px;
+  padding: 0 max(24px, env(safe-area-inset-right)) calc(64px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -702,6 +704,7 @@ kbd {
   padding: 18px 0 14px;
 }
 .game-title {
+  min-width: 0;
   display: flex;
   justify-content: center;
 }
@@ -709,6 +712,10 @@ kbd {
   font-size: 20px;
 }
 .game-mode {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 14px;
   font-weight: 600;
   color: var(--muted);
@@ -811,7 +818,22 @@ kbd {
   display: inline-flex;
   color: var(--accent);
 }
+.qcard-mode {
+  min-width: 0;
+}
+.qcard-tag {
+  margin-top: 14px;
+}
+.qcard-tag + .qcard-ask {
+  margin-top: 14px;
+}
+.qcard-mode-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .qcard-count {
+  flex: none;
   margin-left: auto;
   display: inline-flex;
   align-items: center;
@@ -959,7 +981,7 @@ kbd {
   gap: 10px;
 }
 .options-binary {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .option {
   position: relative;
@@ -1015,6 +1037,8 @@ kbd {
 }
 .option-text {
   flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .option-mark {
   font-weight: 800;
@@ -1080,7 +1104,7 @@ kbd {
   font-weight: 800;
   font-size: 20px;
   color: var(--good);
-  animation: pop 0.5s var(--ease) both;
+  animation: pop 0.5s var(--ease) backwards;
   animation-delay: 0.1s;
 }
 @keyframes pop {
@@ -1091,6 +1115,10 @@ kbd {
   60% {
     opacity: 1;
     transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
   }
 }
 .explanation {
@@ -1181,7 +1209,7 @@ kbd {
   height: 26px;
   border-radius: 7px;
   background: var(--line);
-  animation: pop 0.45s var(--ease) both;
+  animation: pop 0.45s var(--ease) backwards;
 }
 .sq.ok {
   background: var(--good);
@@ -1221,7 +1249,7 @@ kbd {
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: 12px;
 }
 .stat {
@@ -1255,10 +1283,11 @@ kbd {
 
 .ach-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
   gap: 10px;
 }
 .ach {
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -1292,7 +1321,7 @@ kbd {
   border-color: var(--accent);
 }
 .pop {
-  animation: pop 0.5s var(--ease) both;
+  animation: pop 0.5s var(--ease) backwards;
 }
 
 .review {
@@ -1537,7 +1566,38 @@ kbd {
     font-size: 16px;
   }
   .page {
-    padding: 0 16px 48px;
+    padding: 0 max(16px, env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  .game-mode-prefix,
+  .about-keys {
+    display: none;
+  }
+  .emoji-cover-art {
+    width: min(190px, 52vw);
+    aspect-ratio: 1 / 1;
+    font-size: min(38px, 10vw);
+    letter-spacing: 0;
+    white-space: nowrap;
+    padding: 12px 12px 12px 24px;
+  }
+  .emoji-cover {
+    gap: 10px;
+  }
+  .prose {
+    font-size: 21px;
+  }
+  .prose-title {
+    font-size: 24px;
+  }
+  .quote {
+    font-size: 24px;
+  }
+  .clue {
+    font-size: 20px;
+  }
+  .game-bar {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    gap: 10px;
   }
   .header {
     padding: 14px 0;
@@ -1599,8 +1659,8 @@ kbd {
   .qcard-ask {
     margin-top: 18px;
   }
-  .qcard-meta .tag {
-    order: 3;
+  .qcard-mode {
+    flex: 1 1 0;
   }
   .option {
     min-height: 56px;
@@ -1639,7 +1699,25 @@ kbd {
   }
 }
 
+/* Телефон в горизонтальной ориентации: экран низкий, обложку уменьшаем */
+@media (max-height: 500px) and (orientation: landscape) {
+  .emoji-cover-art {
+    width: 170px;
+    aspect-ratio: 1 / 1;
+    font-size: 36px;
+    letter-spacing: 0;
+    white-space: nowrap;
+    padding: 12px 12px 12px 24px;
+  }
+}
+
 @media (hover: none) {
+  .btn-ghost:hover {
+    background: transparent;
+  }
+  .about-keys {
+    display: none;
+  }
   .option:not(:disabled):hover,
   .mode-card:hover,
   .btn-primary:hover {

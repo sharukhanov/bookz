@@ -206,7 +206,10 @@ function GameRun(props: Props & { day: string }) {
           ✕
         </a>
         <div className="game-title">
-          {kind === 'daily' ? <Logo /> : <span className="game-mode">Разминка · {MODES[props.type!].title}</span>}
+          {kind === 'daily' ? <Logo /> : <span className="game-mode">
+              <span className="game-mode-prefix">Разминка · </span>
+              {MODES[props.type!].title}
+            </span>}
         </div>
         <div className="game-score" aria-live="polite">
           {mult > 1 && <span className="combo">×{mult}</span>}
