@@ -8,10 +8,23 @@ import { liveStreak } from '../lib/progress';
 import { useStore } from '../lib/storage';
 import { DAILY_SLOTS } from '../lib/daily';
 
+// Примеры на главной — книги, которых нет в датасете, чтобы не спойлерить игру.
 const TEASERS = [
-  { tag: 'Вакансия', text: 'Ищем преподавателя защиты от тёмных искусств. Контракт на год. Предыдущие не продлевали.' },
-  { tag: 'Отзыв ★☆☆☆☆', text: 'Кит так и не найден. Капитан неадекватен. Корабль утонул.' },
-  { tag: 'Netflix', text: 'Иностранный консультант приезжает в Москву. 18+, кот.' },
+  {
+    style: 'в стиле вакансии',
+    text: 'Требуется сторож в фамильный сад. Опыт работы с вишней не важен: сад всё равно продадут.',
+    answer: 'Вишнёвый сад',
+  },
+  {
+    style: 'в стиле отзыва ★☆☆☆☆',
+    text: 'Отель на острове. Заехало десять гостей, к выезду не осталось никого. Хозяин так и не появился.',
+    answer: 'И никого не стало',
+  },
+  {
+    style: 'в стиле Netflix',
+    text: 'Мальчик, который не хочет взрослеть, уводит троих детей через окно. Семейное, пираты.',
+    answer: 'Питер Пэн',
+  },
 ];
 
 export function Home({ focusModes = false }: { focusModes?: boolean }) {
@@ -99,10 +112,16 @@ export function Home({ focusModes = false }: { focusModes?: boolean }) {
           </div>
 
           <div className="hero-art" aria-hidden="true">
+            <p className="hero-art-label">Так выглядят вопросы</p>
             {TEASERS.map((t, i) => (
-              <div key={t.tag} className={`teaser teaser-${i}`}>
-                <span className="tag">{t.tag}</span>
+              <div key={t.answer} className={`teaser teaser-${i}`}>
+                <span className="teaser-kind">
+                  Плохой пересказ <span className="tag">{t.style}</span>
+                </span>
                 <p>{t.text}</p>
+                <span className="teaser-answer">
+                  Какая это книга? <b>{t.answer}</b>
+                </span>
               </div>
             ))}
           </div>
