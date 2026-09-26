@@ -20,17 +20,24 @@
   .pill.l { background: transparent; color: #17150f; border: 2px solid #17150f; }
   .card { position: absolute; background: #fbf8f2; border: 1px solid #ddd4c4; border-radius: 24px; padding: 24px 26px; box-shadow: 0 24px 50px -24px rgba(23,21,15,.45); }
   .tag { display: inline-block; font-size: 15px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #e0452a; border: 1.5px solid #e0452a; border-radius: 999px; padding: 4px 11px; }
-  .c1 { right: 56px; top: 56px; width: 400px; transform: rotate(3deg); }
-  .c1 p { font-family: 'PF'; font-size: 23px; line-height: 1.28; margin-top: 14px; }
+  .c1 { right: 60px; top: 40px; width: 430px; transform: rotate(2deg); padding: 22px 24px 24px; }
+  .mode { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: #3a352c; margin-bottom: 12px; }
+  .mode b { color: #e0452a; font-family: 'PF'; font-size: 22px; }
+  .q { font-size: 19px; font-weight: 700; margin-top: 14px; }
+  .opts { display: grid; gap: 7px; margin-top: 10px; }
+  .opt { display: flex; justify-content: space-between; align-items: center; padding: 8px 14px; border-radius: 12px; border: 1.5px solid #ddd4c4; background: #f3eee4; font-size: 17px; font-weight: 600; }
+  .opt.ok { background: #d7ecdc; border-color: #2c7a4b; }
+  .opt.ok span { color: #2c7a4b; font-weight: 800; }
+  .c1 p { font-family: 'PF'; font-size: 21px; line-height: 1.28; margin-top: 14px; }
   .c1 .ask { font-size: 16px; color: #7a7263; margin-top: 16px; padding-top: 12px; border-top: 1.5px dashed #ddd4c4; }
   .book { position: absolute; right: 300px; top: 356px; width: 170px; height: 212px; white-space: nowrap; font-size: 34px !important; border-radius: 6px 16px 16px 6px;
     background: linear-gradient(90deg, rgba(0,0,0,.16) 0 9px, transparent 9px 15px), #e0452a; display: grid; place-items: center;
     transform: rotate(-6deg); box-shadow: 0 28px 50px -22px rgba(23,21,15,.55); padding-left: 12px; }
-  .c3 { right: 60px; top: 404px; width: 250px; transform: rotate(4deg); background: #17150f; color: #f3eee4; border-color: #17150f; }
-  .c3 .big { font-family: 'PF'; font-size: 58px; font-weight: 700; line-height: 1; }
+  .c3 { right: 90px; top: 478px; width: 200px; padding: 16px 20px; z-index: 2; transform: rotate(-3deg); background: #17150f; color: #f3eee4; border-color: #17150f; }
+  .c3 .big { font-family: 'PF'; font-size: 44px; font-weight: 700; line-height: 1; }
   .c3 .big span { color: #e0452a; font-style: italic; }
   .c3 .grid { display: flex; gap: 5px; margin-top: 12px; }
-  .c3 .grid i { width: 17px; height: 17px; border-radius: 4px; background: #5fc48b; }
+  .c3 .grid i { width: 13px; height: 13px; border-radius: 4px; background: #5fc48b; }
   .c3 .grid i.b { background: #ff6445; } .c3 .grid i.h { background: #e3b457; }
 </style>
 </head>
@@ -43,11 +50,16 @@
   <div class="pills"><span class="pill">10 вопросов в день</span><span class="pill l">5 минут</span><span class="pill l">без регистрации</span></div>
 
   <div class="card c1">
-    <span class="tag">Отзыв ★☆☆☆☆</span>
+    <div class="mode"><b>?</b> Угадай книгу по плохому пересказу</div>
+    <span class="tag">в стиле отзыва ★☆☆☆☆</span>
     <p>Купил умную колонку, а она смотрит в ответ. Министерство правды сказало, что колонки никогда не было.</p>
-    <div class="ask">Какая это книга?</div>
+    <div class="q">Какая это книга?</div>
+    <div class="opts">
+      <div class="opt">О дивный новый мир</div>
+      <div class="opt ok">1984 <span>✓</span></div>
+      <div class="opt">Мы</div>
+    </div>
   </div>
-  <div class="book">🐋🦵⚓</div>
   <div class="card c3">
     <div class="big">8<span>/</span>10</div>
     <div class="grid"><i></i><i></i><i class="h"></i><i></i><i class="b"></i><i></i><i></i><i></i><i class="b"></i><i></i></div>
